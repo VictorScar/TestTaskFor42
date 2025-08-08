@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pawn : MonoBehaviour, IDraggableObject
 {
+    [SerializeField] private PawnConnector[] connectors;
     public Transform Transform
     {
         get => transform;
@@ -11,8 +12,8 @@ public class Pawn : MonoBehaviour, IDraggableObject
     }
     public Vector3 Position
     {
-        get => Position;
-        set => Position = value;
+        get => transform.position;
+        set => transform.position = new Vector3(value.x, 0, value.y);
     }
 
     public void Activate()
@@ -20,5 +21,8 @@ public class Pawn : MonoBehaviour, IDraggableObject
        Debug.Log("Activate!");
     }
 
-    
+    public void Deactivate()
+    {
+        Debug.Log("Deactivate!");
+    }
 }

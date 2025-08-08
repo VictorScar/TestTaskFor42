@@ -7,4 +7,5 @@ public interface IDraggableObject
     Transform Transform { get; }
     Vector3 Position { get; set; }
     void Activate();
+    void Deactivate();
 }

@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class DragController : MonoBehaviour
 {
@@ -21,12 +17,17 @@ public class DragController : MonoBehaviour
         get => _draggableObject;
         set
         {
-            _draggableObject = value;
-
-            if (value!= null)
+            if (_draggableObject != null)
             {
-                _draggableObject.Transform.SetParent(dragContainer);
+                _draggableObject.Transform.SetParent(null);
             }
+
+            if (value != null)
+            {
+                value.Transform.SetParent(dragContainer);
+            }
+
+            _draggableObject = value;
         }
     }
 
@@ -38,25 +39,42 @@ public class DragController : MonoBehaviour
         {
             dragContainer.position = ray.GetPoint(distance);
         }
+    }
 
-        if (!isDragging && Input.GetMouseButton(0))
+    public void StartDragging()
+    {
+        if (!isDragging)
         {
-            StartDragging();
+            var ray = scanningSource.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out var scanResult, scanDistance,
+                    scanningMask))
+            {
+                if (scanResult.collider.TryGetComponent<IDraggableObject>(out var draggableObject))
+                {
+                    DraggableObject = draggableObject;
+                    _draggableObject.Activate();
+                }
+            }
         }
     }
 
-    private void StartDragging()
+    public void EndDragging()
     {
-        var ray = scanningSource.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out var scanResult, scanDistance,
-                scanningMask))
+        if (isDragging)
         {
-            if (scanResult.collider.TryGetComponent<IDraggableObject>(out var draggableObject))
-            {
-                DraggableObject = draggableObject;
-                _draggableObject.Activate();
-            }
+            _draggableObject.Deactivate();
+            DraggableObject = null;
         }
+    }
+
+    public void StartSetConnection()
+    {
+        Debug.Log("Start set connection");
+    }
+
+    public void EndSetConnection()
+    {
+        Debug.Log("End set connection");
     }
 }
