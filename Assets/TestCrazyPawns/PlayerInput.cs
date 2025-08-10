@@ -32,7 +32,7 @@ public class PlayerInput : MonoBehaviour
             if (hasBeenPressedOnThisFrame && _pressedTime < minDragTime && !_isDragging)
             {
                 onClick?.Invoke();
-                Debug.Log("OnClick");
+                //Debug.Log("OnClick");
                 hasBeenPressedOnThisFrame = false;
                
             }
@@ -50,7 +50,7 @@ public class PlayerInput : MonoBehaviour
         if (_lMouseIsPressed && _pressedTime > minDragTime)
         {
             onDrag?.Invoke();
-            Debug.Log("OnDrag");
+           // Debug.Log("OnDrag");
             _isDragging = true;
         }
     }

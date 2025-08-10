@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7607398093294646273}
   - component: {fileID: 2408811696957996298}
   - component: {fileID: 2262087342751140053}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: pawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,6 +50,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1fb70495a42654e8bd70cf5a4ac042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connectors:
+  - {fileID: 8778083698483235986}
+  - {fileID: 1465501156408938390}
+  - {fileID: 1640746887629446586}
+  - {fileID: 3600148920280753404}
+  _renderers:
+  - {fileID: 8039290623323058629}
+  - {fileID: 3822121263811634697}
+  - {fileID: 6381145602698634509}
+  - {fileID: 6493620074152408865}
+  - {fileID: 9020340386637221479}
+  _defaultMaterial: {fileID: 2100000, guid: 7c43818076f5b4867ad517424bd0d68a, type: 2}
 --- !u!65 &2262087342751140053
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -82,8 +94,7 @@ GameObject:
   - component: {fileID: 7003788038614006662}
   - component: {fileID: 6983469710422659349}
   - component: {fileID: 8039290623323058629}
-  - component: {fileID: 7724141220265440265}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: CubeBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,27 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7724141220265440265
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6572458348302323540}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &409173297958835837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -239,14 +229,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: SphereSocket 01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8354306787173419028, guid: 3aec081dc1aa47f47b3091f9e6640a86,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aec081dc1aa47f47b3091f9e6640a86, type: 3}
+--- !u!114 &1640746887629446586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1398568258181942215, guid: 3aec081dc1aa47f47b3091f9e6640a86,
+    type: 3}
+  m_PrefabInstance: {fileID: 409173297958835837}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd0cd98508dcdf449e43db691d83c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3222406629766421869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2960524341256522512, guid: 3aec081dc1aa47f47b3091f9e6640a86,
+    type: 3}
+  m_PrefabInstance: {fileID: 409173297958835837}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6493620074152408865 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6895105586805498204, guid: 3aec081dc1aa47f47b3091f9e6640a86,
     type: 3}
   m_PrefabInstance: {fileID: 409173297958835837}
   m_PrefabAsset: {fileID: 0}
@@ -313,14 +326,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: SphereSocket 01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8354306787173419028, guid: 3aec081dc1aa47f47b3091f9e6640a86,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aec081dc1aa47f47b3091f9e6640a86, type: 3}
+--- !u!114 &1465501156408938390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1398568258181942215, guid: 3aec081dc1aa47f47b3091f9e6640a86,
+    type: 3}
+  m_PrefabInstance: {fileID: 521916051609322577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd0cd98508dcdf449e43db691d83c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3326984548453027649 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2960524341256522512, guid: 3aec081dc1aa47f47b3091f9e6640a86,
+    type: 3}
+  m_PrefabInstance: {fileID: 521916051609322577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6381145602698634509 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6895105586805498204, guid: 3aec081dc1aa47f47b3091f9e6640a86,
     type: 3}
   m_PrefabInstance: {fileID: 521916051609322577}
   m_PrefabAsset: {fileID: 0}
@@ -387,6 +423,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SphereSocket 01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8354306787173419028, guid: 3aec081dc1aa47f47b3091f9e6640a86,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -395,6 +436,24 @@ PrefabInstance:
 --- !u!4 &831792666973529131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2960524341256522512, guid: 3aec081dc1aa47f47b3091f9e6640a86,
+    type: 3}
+  m_PrefabInstance: {fileID: 2494706352988188475}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3600148920280753404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1398568258181942215, guid: 3aec081dc1aa47f47b3091f9e6640a86,
+    type: 3}
+  m_PrefabInstance: {fileID: 2494706352988188475}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd0cd98508dcdf449e43db691d83c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!23 &9020340386637221479 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6895105586805498204, guid: 3aec081dc1aa47f47b3091f9e6640a86,
     type: 3}
   m_PrefabInstance: {fileID: 2494706352988188475}
   m_PrefabAsset: {fileID: 0}
@@ -461,14 +520,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: SphereSocket 01
       objectReference: {fileID: 0}
+    - target: {fileID: 8354306787173419028, guid: 3aec081dc1aa47f47b3091f9e6640a86,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aec081dc1aa47f47b3091f9e6640a86, type: 3}
+--- !u!23 &3822121263811634697 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6895105586805498204, guid: 3aec081dc1aa47f47b3091f9e6640a86,
+    type: 3}
+  m_PrefabInstance: {fileID: 7690656084120291157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4877213428354239557 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2960524341256522512, guid: 3aec081dc1aa47f47b3091f9e6640a86,
     type: 3}
   m_PrefabInstance: {fileID: 7690656084120291157}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8778083698483235986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1398568258181942215, guid: 3aec081dc1aa47f47b3091f9e6640a86,
+    type: 3}
+  m_PrefabInstance: {fileID: 7690656084120291157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd0cd98508dcdf449e43db691d83c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

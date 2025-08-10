@@ -9,7 +9,6 @@ public class Game : MonoBehaviour
 
     private void Start()
     {
-        
         var generatorData = new DeskGeneratorData
         {
             DeskSize = gameConfig.DeskConfig.DeskSize,
@@ -20,12 +19,19 @@ public class Game : MonoBehaviour
 
         deskGenerator.Generate(generatorData);
 
+        var pawnData = new PawnData
+        {
+            DeleteMaterial = gameConfig.PawnConfig.DeleteMaterial,
+            
+        };
+
         var pawnGeneratorData = new PawnGeneratorData
         {
             InitialSpawnRadius = gameConfig.PawnConfig.InitialSpawnRadius,
             Prefab = gameConfig.PawnConfig.PawnPrefab,
             SpawnPawnCount = gameConfig.PawnConfig.SpawnPawnCount,
-            PawnRoot = pawnsRoot
+            PawnRoot = pawnsRoot,
+            PawnData = pawnData
         };
 
         pawnsGenerator.GeneratePawns(pawnGeneratorData);

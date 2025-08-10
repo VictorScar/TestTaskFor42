@@ -8,4 +8,6 @@ public struct PawnGeneratorData
     public int SpawnPawnCount;
     public Pawn Prefab;
     public Transform PawnRoot;
+
+    public PawnData PawnData;
 }

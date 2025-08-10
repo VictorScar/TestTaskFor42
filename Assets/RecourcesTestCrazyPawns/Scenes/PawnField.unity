@@ -413,12 +413,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5971628bd79db4ba6badba5d48b408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanningSource: {fileID: 963179621}
+  gameCamera: {fileID: 963179621}
   dragContainer: {fileID: 1774954516}
   scanDistance: 500
-  scanningMask:
+  pawnsMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 65536
+  deskMask:
+    serializedVersion: 2
+    m_Bits: 32768
 --- !u!1 &957174460
 GameObject:
   m_ObjectHideFlags: 0

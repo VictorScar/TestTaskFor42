@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class PawnConnector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void GetConnector()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetConnector(PawnConnector connector)
     {
-        
+        Debug.Log("Set joint!!");
     }
 }

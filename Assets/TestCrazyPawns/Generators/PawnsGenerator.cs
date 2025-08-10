@@ -1,7 +1,6 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PawnsGenerator : MonoBehaviour
 {
@@ -30,6 +29,7 @@ public class PawnsGenerator : MonoBehaviour
 
         if (TryGetNewPosition(_spawnRadius, out var figurePos))
         {
+            pawn.Init(data.PawnData);
             pawn.Position = GetRandomPositionInRadius(data.InitialSpawnRadius);
             return pawn;
         }

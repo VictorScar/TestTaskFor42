@@ -8,4 +8,6 @@ public interface IDraggableObject
     Vector3 Position { get; set; }
     void Activate();
     void Deactivate();
+    bool IsMustDeleted { get; set; }
+    void Destroy();
 }
