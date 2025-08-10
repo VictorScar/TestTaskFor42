@@ -13,6 +13,7 @@ public class DragController : MonoBehaviour
     private Plane plane = new Plane(Vector3.up, 0);
     private IDraggableObject _draggableObject;
     private PawnConnector _settingConnector;
+    private ConnectionsController _connectionController;
 
     private bool IsDragging => _draggableObject != null;
     private bool IsSettingConnector => _settingConnector != null;
@@ -68,7 +69,7 @@ public class DragController : MonoBehaviour
                 if (scanResult.collider.TryGetComponent<IDraggableObject>(out var draggableObject))
                 {
                     DraggableObject = draggableObject;
-                    _draggableObject.Activate();
+                    DraggableObject.Activate();
                 }
             }
         }
@@ -78,14 +79,21 @@ public class DragController : MonoBehaviour
     {
         if (IsDragging)
         {
-            _draggableObject.Deactivate();
+            DraggableObject.Deactivate();
 
-            if (_draggableObject.IsMustDeleted)
+            if (DraggableObject.IsMustDeleted)
             {
-                _draggableObject.Destroy();
+                RemovePawn(DraggableObject);
+                
             }
             DraggableObject = null;
         }
+    }
+
+    private void RemovePawn(IDraggableObject draggableObject)
+    {
+        _connectionController.RemoveConnectionsByPawn(DraggableObject.Connectors);
+        DraggableObject.Remove();
     }
 
     public void StartSetConnection()
@@ -122,11 +130,16 @@ public class DragController : MonoBehaviour
                 {
                     if (connector != _settingConnector)
                     {
-                        connector.SetConnector(_settingConnector);
+                        _connectionController.AddConnection(_settingConnector, connector);
                         _settingConnector = null;
                     }
                 }
             }
         }
+    }
+
+    public void Init(ConnectionsController connectionsController)
+    {
+        _connectionController = connectionsController;
     }
 }

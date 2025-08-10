@@ -9,5 +9,6 @@ public interface IDraggableObject
     void Activate();
     void Deactivate();
     bool IsMustDeleted { get; set; }
-    void Destroy();
+    void Remove();
+    PawnConnector[] Connectors { get; }
 }

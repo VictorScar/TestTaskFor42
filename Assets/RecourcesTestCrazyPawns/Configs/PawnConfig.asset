@@ -18,3 +18,4 @@ MonoBehaviour:
   spawnPawnCount: 7
   deleteMaterial: {fileID: 2100000, guid: 854bcfe2fa381404e981b4cafde1e4df, type: 2}
   activeConnectorColor: {r: 0, g: 0.9169811, b: 0.04085583, a: 1}
+  inactiveConnectorColor: {r: 1, g: 0, b: 0, a: 1}

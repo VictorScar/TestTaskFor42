@@ -31,10 +31,12 @@ public class Pawn : MonoBehaviour, IDraggableObject
         }
     }
 
-    public void Destroy()
+    public void Remove()
     {
         Destroy(gameObject);
     }
+
+    public PawnConnector[] Connectors => connectors;
 
     public Transform Transform => transform;
 
