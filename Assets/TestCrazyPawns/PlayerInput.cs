@@ -12,8 +12,9 @@ public class PlayerInput : MonoBehaviour
     private bool hasBeenPressedOnThisFrame;
     private bool _isDragging;
 
-    public event Action onDrag;
+    public event Action onStartDrag;
     public event Action onEndDrag;
+    public event Action onDrag;
     public event Action onClick;
 
     void Update()
@@ -24,6 +25,12 @@ public class PlayerInput : MonoBehaviour
         {
             _pressedTime += Time.deltaTime;
             hasBeenPressedOnThisFrame = true;
+
+            if (!_isDragging && _pressedTime > minDragTime)
+            {
+                onStartDrag?.Invoke();
+                Debug.Log("OnStartDrag");
+            }
         }
         else
         {

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InputController : MonoBehaviour
@@ -10,17 +7,16 @@ public class InputController : MonoBehaviour
     
     private void Start()
     {
-        input.onDrag += dragController.StartDragging;
-        input.onEndDrag += dragController.EndDragging;
-        input.onClick += dragController.StartSetConnection;
-        //input.onClick += dragController.EndSetConnection;
+        input.onStartDrag += dragController.OnStartDragElement;
+        input.onEndDrag += dragController.OnEndDraggElement;
+        input.onClick += dragController.OnSelectConnector;
+        
     }
 
     private void OnDestroy()
     {
-        input.onClick -= dragController.StartSetConnection;
-        input.onClick -= dragController.EndSetConnection;
-        input.onDrag -= dragController.StartDragging;
-        input.onEndDrag -= dragController.EndDragging;
+        input.onStartDrag -= dragController.OnStartDragElement;
+        input.onEndDrag -= dragController.OnEndDraggElement;
+        input.onClick -= dragController.OnSelectConnector;
     }
 }
