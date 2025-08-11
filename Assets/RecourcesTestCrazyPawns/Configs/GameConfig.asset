@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deskConfig: {fileID: 11400000, guid: 0f686c3bde170de41acd26f876578e69, type: 2}
   pawnConfig: {fileID: 11400000, guid: 2b1e3285dc7783f489fefd7c332acceb, type: 2}
+  crazyPawnSettings: {fileID: 11400000, guid: c3b00c709b1f94f22a212add39c80449, type: 2}
+  cellSize: {x: 1.5, y: 1.5}

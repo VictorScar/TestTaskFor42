@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawnPrefab: {fileID: 2408811696957996298, guid: 76811a70cb80aea44be0c0388cde22dd,
     type: 3}
-  initialSpawnRadius: 7
   spawnPawnCount: 7
-  deleteMaterial: {fileID: 2100000, guid: 854bcfe2fa381404e981b4cafde1e4df, type: 2}
-  activeConnectorColor: {r: 0, g: 0.9169811, b: 0.04085583, a: 1}
-  inactiveConnectorColor: {r: 1, g: 0, b: 0, a: 1}
+  selectedConnectorConnectorMaterial: {fileID: 2100000, guid: ed0754c57fcc63b4c810ca27404cbf4f,
+    type: 2}
+  defaultMaterial: {fileID: 2100000, guid: 7c43818076f5b4867ad517424bd0d68a, type: 2}

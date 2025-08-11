@@ -13,7 +13,7 @@ public class InputController : MonoBehaviour
         input.onDrag += dragController.StartDragging;
         input.onEndDrag += dragController.EndDragging;
         input.onClick += dragController.StartSetConnection;
-        input.onClick += dragController.EndSetConnection;
+        //input.onClick += dragController.EndSetConnection;
     }
 
     private void OnDestroy()

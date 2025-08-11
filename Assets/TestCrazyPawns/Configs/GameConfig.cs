@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using CrazyPawn;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameConfigs/GameConfig", fileName = "GameConfig")]
@@ -7,7 +6,12 @@ public class GameConfig : ScriptableObject
 {
     [SerializeField] private DeskConfig deskConfig;
     [SerializeField] private PawnConfig pawnConfig;
-    
-    public DeskConfig DeskConfig => deskConfig;
+    [SerializeField] private CrazyPawnSettings crazyPawnSettings;
+    [SerializeField] private Vector2 cellSize = new Vector2(1.5f, 1.5f)
+        ;
+
+    public CrazyPawnSettings CrazyPawnSettings => crazyPawnSettings;
     public PawnConfig PawnConfig => pawnConfig;
+    public Vector2 CellSize => cellSize;
+   
 }

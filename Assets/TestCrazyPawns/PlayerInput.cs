@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private float minDragTime;
-    
+
     private bool _lMouseIsPressed;
     public float _pressedTime;
     private bool hasBeenPressedOnThisFrame;
@@ -15,7 +15,7 @@ public class PlayerInput : MonoBehaviour
     public event Action onDrag;
     public event Action onEndDrag;
     public event Action onClick;
-    
+
     void Update()
     {
         _lMouseIsPressed = Input.GetMouseButton(0);
@@ -32,9 +32,8 @@ public class PlayerInput : MonoBehaviour
             if (hasBeenPressedOnThisFrame && _pressedTime < minDragTime && !_isDragging)
             {
                 onClick?.Invoke();
-                //Debug.Log("OnClick");
+                Debug.Log("OnClick");
                 hasBeenPressedOnThisFrame = false;
-               
             }
 
             if (_isDragging)
@@ -43,14 +42,14 @@ public class PlayerInput : MonoBehaviour
                 Debug.Log("OnEndDrag)");
                 _isDragging = false;
             }
+
             hasBeenPressedOnThisFrame = false;
-           
         }
-        
+
         if (_lMouseIsPressed && _pressedTime > minDragTime)
         {
             onDrag?.Invoke();
-           // Debug.Log("OnDrag");
+            // Debug.Log("OnDrag");
             _isDragging = true;
         }
     }

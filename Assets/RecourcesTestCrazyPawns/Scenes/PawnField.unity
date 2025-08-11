@@ -168,51 +168,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1096223830}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &227263841
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 227263842}
-  - component: {fileID: 227263843}
-  m_Layer: 0
-  m_Name: pawns generator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &227263842
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 227263841}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1096223830}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &227263843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 227263841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b52b55f1dca91be459dac4dfc3f60c8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAttemptNumber: 10
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,8 +432,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 957174461}
+  - component: {fileID: 957174462}
   m_Layer: 0
-  m_Name: pawns
+  m_Name: pawns_controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -499,6 +455,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1096223830}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &957174462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957174460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5a31a822465314a82852cee7b417fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &963179621 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1559381485759989653, guid: 368457728b5d74561b805d9bb789017e,
@@ -535,11 +503,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deskGenerator: {fileID: 1812396539}
-  pawnsGenerator: {fileID: 227263843}
   gameConfig: {fileID: 11400000, guid: a4eb40f4acb4c2746b523bf07c44bf0c, type: 2}
   pawnsRoot: {fileID: 957174461}
   connectionsController: {fileID: 164234147}
   dragController: {fileID: 588830103}
+  pawnsController: {fileID: 957174462}
 --- !u!4 &1096223830
 Transform:
   m_ObjectHideFlags: 0
@@ -554,7 +522,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1812396538}
-  - {fileID: 227263842}
   - {fileID: 588830102}
   - {fileID: 957174461}
   - {fileID: 1098625523}

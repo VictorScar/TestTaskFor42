@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class Pawn : MonoBehaviour, IDraggableObject
+public class Pawn : MonoBehaviour
 {
     [SerializeField] private PawnConnector[] connectors;
     [SerializeField] private MeshRenderer[] _renderers;
@@ -31,11 +27,6 @@ public class Pawn : MonoBehaviour, IDraggableObject
         }
     }
 
-    public void Remove()
-    {
-        Destroy(gameObject);
-    }
-
     public PawnConnector[] Connectors => connectors;
 
     public Transform Transform => transform;
@@ -49,16 +40,37 @@ public class Pawn : MonoBehaviour, IDraggableObject
     public void Init(PawnData data)
     {
         deleteMaterial = data.DeleteMaterial;
+
+        if (Connectors != null)
+        {
+            foreach (var connector in Connectors)
+            {
+                connector.Init(data.ConnectorData);
+            }
+        }
     }
 
     public void Activate()
     {
-        Debug.Log("Activate!");
+        
     }
 
     public void Deactivate()
     {
-        Debug.Log("Deactivate!");
+       
+    }
+
+    public bool IsContainConnector(PawnConnector connector)
+    {
+        foreach (var c in connectors)
+        {
+            if (connector == c)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void SetMaterial(Material material)

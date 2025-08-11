@@ -7,5 +7,6 @@ using UnityEngine;
 public struct PawnData
 {
     public Material DeleteMaterial;
-    public Color ActiveConnectorColor;
+  
+    public ConnectorData ConnectorData { get; set; }
 }
