@@ -91,7 +91,7 @@ public class DragController : MonoBehaviour
         {
             EndDragging();
         }
-        else if(IsSettingConnector)
+        else if (IsSettingConnector)
         {
             EndSetConnection();
         }
@@ -164,10 +164,10 @@ public class DragController : MonoBehaviour
                         _connectionController.AddConnection(_settingConnector, connector);
                     }
                 }
-
-                _settingConnector = null;
-                _pawnsController.UpdateConnectorsState(_settingConnector);
             }
         }
+
+        _settingConnector = null;
+        _pawnsController.UpdateConnectorsState(_settingConnector);
     }
 }
