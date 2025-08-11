@@ -423,6 +423,9 @@ MonoBehaviour:
   deskMask:
     serializedVersion: 2
     m_Bits: 32768
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 98304
 --- !u!1 &957174460
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +507,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deskGenerator: {fileID: 1812396539}
   gameConfig: {fileID: 11400000, guid: a4eb40f4acb4c2746b523bf07c44bf0c, type: 2}
-  pawnsRoot: {fileID: 957174461}
   connectionsController: {fileID: 164234147}
   dragController: {fileID: 588830103}
   pawnsController: {fileID: 957174462}
