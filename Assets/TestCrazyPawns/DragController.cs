@@ -10,11 +10,12 @@ public class DragController : MonoBehaviour
     [SerializeField] private LayerMask deskMask;
     [SerializeField] private LayerMask interactableMask;
 
-    private Plane plane = new Plane(Vector3.up, 0);
+    private Plane _plane = new Plane(Vector3.up, 0);
     private Pawn _draggableObject;
     private PawnConnector _settingConnector;
     private ConnectionsController _connectionController;
     private PawnsController _pawnsController;
+    private CameraController _cameraController;
     private float _checkingVerticalOffset = 2f;
 
     private bool IsDragging => _draggableObject != null;
@@ -43,7 +44,7 @@ public class DragController : MonoBehaviour
     {
         var ray = gameCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (plane.Raycast(ray, out var distance))
+        if (_plane.Raycast(ray, out var distance))
         {
             dragContainer.position = ray.GetPoint(distance);
         }
@@ -58,15 +59,18 @@ public class DragController : MonoBehaviour
         }
     }
 
-    public void Init(ConnectionsController connectionsController, PawnsController pawnsController)
+    public void Init(ConnectionsController connectionsController, PawnsController pawnsController,
+        CameraController cameraController)
     {
         _connectionController = connectionsController;
         _pawnsController = pawnsController;
+        _cameraController = cameraController;
     }
 
     public void OnStartDragElement()
     {
-        var ray = gameCamera.ScreenPointToRay(Input.mousePosition);
+        var cursorPosition = Input.mousePosition;
+        var ray = gameCamera.ScreenPointToRay(cursorPosition);
 
         if (Physics.Raycast(ray, out var scanResult, scanDistance,
                 interactableMask))
@@ -82,10 +86,14 @@ public class DragController : MonoBehaviour
             {
                 StartSetConnection(connector);
             }
+            else
+            {
+                _cameraController.StartDragCamera(cursorPosition);
+            }
         }
     }
 
-    public void OnEndDraggElement()
+    public void OnEndDragElement()
     {
         if (IsDragging)
         {
@@ -94,6 +102,10 @@ public class DragController : MonoBehaviour
         else if (IsSettingConnector)
         {
             EndSetConnection();
+        }
+        else
+        {
+            _cameraController.EndDragCamera();
         }
     }
 

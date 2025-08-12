@@ -7,6 +7,7 @@ public class Game : MonoBehaviour
     [SerializeField] private ConnectionsController connectionsController;
     [SerializeField] private DragController dragController;
     [SerializeField] private PawnsController pawnsController;
+    [SerializeField] private CameraController cameraController;
 
     private PawnsDesk _desk;
 
@@ -36,6 +37,6 @@ public class Game : MonoBehaviour
 
         _desk = deskGenerator.Generate(generatorData);
         pawnsController.Init(pawnConfigData);
-        dragController.Init(connectionsController, pawnsController);
+        dragController.Init(connectionsController, pawnsController, cameraController);
     }
 }

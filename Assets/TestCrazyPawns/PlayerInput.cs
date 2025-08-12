@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -9,55 +7,73 @@ public class PlayerInput : MonoBehaviour
 
     private bool _lMouseIsPressed;
     public float _pressedTime;
-    private bool hasBeenPressedOnThisFrame;
+    private bool _hasBeenPressedOnThisFrame;
     private bool _isDragging;
 
     public event Action onStartDrag;
     public event Action onEndDrag;
     public event Action onDrag;
     public event Action onClick;
+    public event Action<float> onScroll;
+
+    public bool IsEnabled { get; set; } = true;
 
     void Update()
+    {
+        if (IsEnabled)
+        {
+            DragAndClickInput();
+            MoveInputs();
+        }
+    }
+
+    private void MoveInputs()
+    {
+        var scrollDelta = Input.mouseScrollDelta;
+        onScroll?.Invoke(scrollDelta.y);
+        //  Debug.Log(scrollDelta);
+    }
+
+    private void DragAndClickInput()
     {
         _lMouseIsPressed = Input.GetMouseButton(0);
 
         if (_lMouseIsPressed)
         {
             _pressedTime += Time.deltaTime;
-            hasBeenPressedOnThisFrame = true;
+            _hasBeenPressedOnThisFrame = true;
 
-            if (!_isDragging && _pressedTime > minDragTime)
+            if (_pressedTime > minDragTime)
             {
-                onStartDrag?.Invoke();
-                Debug.Log("OnStartDrag");
+                if (!_isDragging)
+                {
+                    onStartDrag?.Invoke();
+                    // Debug.Log("OnStartDrag");
+                }
+
+                onDrag?.Invoke();
+                _isDragging = true;
             }
         }
         else
         {
             _pressedTime = 0f;
 
-            if (hasBeenPressedOnThisFrame && _pressedTime < minDragTime && !_isDragging)
+            if (_hasBeenPressedOnThisFrame && _pressedTime < minDragTime && !_isDragging)
             {
                 onClick?.Invoke();
-                Debug.Log("OnClick");
-                hasBeenPressedOnThisFrame = false;
+                //Debug.Log("OnClick");
+                _hasBeenPressedOnThisFrame = false;
             }
 
             if (_isDragging)
             {
                 onEndDrag?.Invoke();
-                Debug.Log("OnEndDrag)");
+                // Debug.Log("OnEndDrag)");
                 _isDragging = false;
             }
 
-            hasBeenPressedOnThisFrame = false;
-        }
-
-        if (_lMouseIsPressed && _pressedTime > minDragTime)
-        {
-            onDrag?.Invoke();
-            // Debug.Log("OnDrag");
-            _isDragging = true;
+            _hasBeenPressedOnThisFrame = false;
         }
     }
 }
