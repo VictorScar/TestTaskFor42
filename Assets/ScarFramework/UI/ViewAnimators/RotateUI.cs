@@ -29,7 +29,16 @@ namespace ScarFramework.UI.ViewAnimators
         protected override void OnEndAnimation()
         {
         }
-
-
+        
+        public override UIAnimator GetInstance()
+        {
+            var instance = CreateInstance<RotateUI>();
+            instance.ease = ease;
+            instance.duration = duration;
+            instance.startValue = startValue;
+            instance.endValue = endValue;
+            
+            return instance;
+        }
     }
 }

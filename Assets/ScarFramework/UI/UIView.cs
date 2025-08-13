@@ -28,9 +28,12 @@ namespace ScarFramework.UI
             {
                 cg = GetComponent<CanvasGroup>();
             }
-            
+
+            if(showInAnimator) showInAnimator = showInAnimator.GetInstance();
+            if(hideInAnimator) hideInAnimator = hideInAnimator.GetInstance();
+
             showInAnimator?.Init(this);
-           hideInAnimator?.Init(this);
+            hideInAnimator?.Init(this);
 
             OnInit();
         }

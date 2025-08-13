@@ -7,8 +7,8 @@ namespace ScarFramework.UI.ViewAnimators
     [CreateAssetMenu(menuName = "UI/Animators/Fade", fileName = "FadeUI")]
     public class FadeUI : UIAnimator
     {
-        [SerializeField] protected float startValue = 1;
-        [SerializeField] protected float endValue = 1;
+        public float startValue = 1;
+        public float endValue = 1;
 
         protected override Tween AnimateInternal(UIView view)
         {
@@ -30,5 +30,15 @@ namespace ScarFramework.UI.ViewAnimators
            // _view.CG.alpha = endValue;
         }
 
+        public override UIAnimator GetInstance()
+        {
+            var instance = CreateInstance<FadeUI>();
+            instance.ease = ease;
+            instance.duration = duration;
+            instance.startValue = startValue;
+            instance.endValue = endValue;
+            
+            return instance;
+        }
     }
 }
