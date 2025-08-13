@@ -1,6 +1,8 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using TestCrazyPawns.Configs;
 using TestCrazyPawns.Desk;
+using TestCrazyPawns.Pawn;
 using UnityEngine;
 
 namespace TestCrazyPawns._GameServices

@@ -1,36 +1,36 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PawnConnector : MonoBehaviour
+namespace TestCrazyPawns.Pawn
 {
-    [SerializeField] private MeshRenderer renderer;
-    private ConnectorData _data;
-
-    public Vector3 Position
+    public class PawnConnector : MonoBehaviour
     {
-        get => transform.position;
-    }
+        [SerializeField] private MeshRenderer renderer;
+        private ConnectorData _data;
 
-    public void Init(ConnectorData connectorData)
-    {
-        _data = connectorData;
-    }
-
-    public void SetState(ConnectorState state)
-    {
-        switch (state)
+        public Vector3 Position
         {
-            case ConnectorState.Default:
-                renderer.material = _data.DefaultConnectorMaterial;
-                break;
-            case ConnectorState.Selected:
-                renderer.material = _data.SelectedConnectorMaterial;
-                break;
-            case ConnectorState.Active:
-                renderer.material = _data.ActiveConnectorMaterial;
-                break;
+            get => transform.position;
+        }
+
+        public void Init(ConnectorData connectorData)
+        {
+            _data = connectorData;
+        }
+
+        public void SetState(ConnectorState state)
+        {
+            switch (state)
+            {
+                case ConnectorState.Default:
+                    renderer.material = _data.DefaultConnectorMaterial;
+                    break;
+                case ConnectorState.Selected:
+                    renderer.material = _data.SelectedConnectorMaterial;
+                    break;
+                case ConnectorState.Active:
+                    renderer.material = _data.ActiveConnectorMaterial;
+                    break;
+            }
         }
     }
 }

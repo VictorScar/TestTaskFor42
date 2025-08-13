@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TestCrazyPawns._Pawn
+namespace TestCrazyPawns.Pawn
 {
     public class ChessFigure : MonoBehaviour
     {

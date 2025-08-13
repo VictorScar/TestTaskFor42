@@ -1,7 +1,9 @@
+using TestCrazyPawns._GameServices;
 using TestCrazyPawns._Level;
 using TestCrazyPawns.Connections;
 using TestCrazyPawns.Desk;
-using TestCrazyPawns._Pawn;
+using TestCrazyPawns.Pawn;
+using TestCrazyPawns.Configs;
 using TestCrazyPawns.Data;
 using UnityEngine;
 

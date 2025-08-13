@@ -1,44 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
-using TestCrazyPawns.Desk;
 using UnityEngine;
 
-public class DeskGenerator : MonoBehaviour
+namespace TestCrazyPawns.Desk
 {
-    [SerializeField] private PawnsDesk deskPrefab;
-    [SerializeField] private DeskCell cellPrefab;
-
-    public PawnsDesk Generate(DeskConfigData data)
+    public class DeskGenerator : MonoBehaviour
     {
-        var deskInstance = Instantiate(deskPrefab);
-        var xOffset = -0.5f * data.DeskSize.x * data.CellSize.x + 0.5f * data.CellSize.x;
-        var yOffset = -0.5f * data.DeskSize.y * data.CellSize.y + 0.5f * data.CellSize.y;
+        [SerializeField] private PawnsDesk deskPrefab;
+        [SerializeField] private DeskCell cellPrefab;
 
-        for (int y = 0; y < data.DeskSize.y; y++)
+        public PawnsDesk Generate(DeskConfigData data)
         {
-            for (int x = 0; x < data.DeskSize.x; x++)
-            {
-                var cell = Instantiate(cellPrefab, deskInstance.Root);
-                cell.Position = new Vector2(xOffset + x * data.CellSize.x,
-                    yOffset + y * data.CellSize.y);
-                cell.Size = data.CellSize;
+            var deskInstance = Instantiate(deskPrefab);
+            var xOffset = -0.5f * data.DeskSize.x * data.CellSize.x + 0.5f * data.CellSize.x;
+            var yOffset = -0.5f * data.DeskSize.y * data.CellSize.y + 0.5f * data.CellSize.y;
 
-                if (!IsEvenNumber(x) & !IsEvenNumber(y) | IsEvenNumber(x) & IsEvenNumber(y))
+            for (int y = 0; y < data.DeskSize.y; y++)
+            {
+                for (int x = 0; x < data.DeskSize.x; x++)
                 {
-                    cell.CellColor = data.BlackCelColor;
-                }
-                else
-                {
-                    cell.CellColor = data.WhiteCelColor;
+                    var cell = Instantiate(cellPrefab, deskInstance.Root);
+                    cell.Position = new Vector2(xOffset + x * data.CellSize.x,
+                        yOffset + y * data.CellSize.y);
+                    cell.Size = data.CellSize;
+
+                    if (!IsEvenNumber(x) & !IsEvenNumber(y) | IsEvenNumber(x) & IsEvenNumber(y))
+                    {
+                        cell.CellColor = data.BlackCelColor;
+                    }
+                    else
+                    {
+                        cell.CellColor = data.WhiteCelColor;
+                    }
                 }
             }
+
+            return deskInstance;
         }
 
-        return deskInstance;
-    }
-
-    private bool IsEvenNumber(int number)
-    {
-        return number % 2 == 0;
+        private bool IsEvenNumber(int number)
+        {
+            return number % 2 == 0;
+        }
     }
 }

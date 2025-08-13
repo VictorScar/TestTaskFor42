@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public enum ConnectorState
+namespace TestCrazyPawns.Pawn
 {
-    Default,
-    Selected,
-    Active
+    public enum ConnectorState
+    {
+        Default,
+        Selected,
+        Active
+    }
 }

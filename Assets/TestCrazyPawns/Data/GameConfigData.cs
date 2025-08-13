@@ -1,14 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using TestCrazyPawns.Data;
 using TestCrazyPawns.Desk;
+using TestCrazyPawns.Pawn;
 using UnityEngine;
 
-public class GameConfigData
+namespace TestCrazyPawns.Configs
 {
-    public DeskConfigData DeskConfigData;
-    public PawnConfigData PawnConfigData;
-    public DragControllerParams DragControllerParams;
-    public CameraControllerParams CameraControllerParams;
-    public Vector2 CellSize;
+    public class GameConfigData
+    {
+        public DeskConfigData DeskConfigData;
+        public PawnConfigData PawnConfigData;
+        public DragControllerParams DragControllerParams;
+        public CameraControllerParams CameraControllerParams;
+        public Vector2 CellSize;
+    }
 }

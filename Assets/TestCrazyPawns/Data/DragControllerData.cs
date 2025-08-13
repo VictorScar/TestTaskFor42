@@ -1,5 +1,5 @@
 using TestCrazyPawns._Level;
-using TestCrazyPawns._Pawn;
+using TestCrazyPawns.Pawn;
 using TestCrazyPawns.Connections;
 
 namespace TestCrazyPawns.Data

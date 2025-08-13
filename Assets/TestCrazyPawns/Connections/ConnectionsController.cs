@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TestCrazyPawns.Pawn;
 using UnityEngine;
 
 namespace TestCrazyPawns.Connections

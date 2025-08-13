@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GameCamera : MonoBehaviour
+namespace TestCrazyPawns._Level
 {
-  [SerializeField] private Camera cam;
-
-  public Camera Camera => cam;
-  
-  public Vector3 Position
+  public class GameCamera : MonoBehaviour
   {
-    get => transform.position;
-    set => transform.position = value;
-  }
+    [SerializeField] private Camera cam;
 
-  public Vector3 Forward => transform.forward;
+    public Camera Camera => cam;
+  
+    public Vector3 Position
+    {
+      get => transform.position;
+      set => transform.position = value;
+    }
+
+    public Vector3 Forward => transform.forward;
+  }
 }

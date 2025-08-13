@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using TestCrazyPawns.Pawn;
 using UnityEngine;
 
-namespace TestCrazyPawns._Pawn
+namespace TestCrazyPawns.Pawn
 {
     public class PawnsController : MonoBehaviour
     {
-        private List<global::TestCrazyPawns._Pawn.ChessFigure> _pawns = new List<global::TestCrazyPawns._Pawn.ChessFigure>();
+        private List<global::TestCrazyPawns.Pawn.ChessFigure> _pawns = new List<global::TestCrazyPawns.Pawn.ChessFigure>();
         private PawnsGenerator _generator;
 
-        public List<global::TestCrazyPawns._Pawn.ChessFigure> Pawns => _pawns;
+        public List<global::TestCrazyPawns.Pawn.ChessFigure> Pawns => _pawns;
 
         public void Init(PawnConfigData pawnConfigData)
         {
@@ -38,7 +39,7 @@ namespace TestCrazyPawns._Pawn
             _pawns = _generator.GeneratePawns(generatorData);
         }
 
-        public bool RemovePawn(global::TestCrazyPawns._Pawn.ChessFigure chessFigure)
+        public bool RemovePawn(global::TestCrazyPawns.Pawn.ChessFigure chessFigure)
         {
             if (chessFigure)
             {
@@ -51,7 +52,7 @@ namespace TestCrazyPawns._Pawn
             return false;
         }
 
-        public bool GetPawnByConnector(PawnConnector connector, out global::TestCrazyPawns._Pawn.ChessFigure connectorChessFigure)
+        public bool GetPawnByConnector(PawnConnector connector, out global::TestCrazyPawns.Pawn.ChessFigure connectorChessFigure)
         {
             if (connector)
             {

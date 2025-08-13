@@ -1,5 +1,5 @@
 using TestCrazyPawns.Connections;
-using TestCrazyPawns._Pawn;
+using TestCrazyPawns.Pawn;
 using TestCrazyPawns.Data;
 using UnityEngine;
 
@@ -7,15 +7,14 @@ namespace TestCrazyPawns._Level
 {
     public class DragController : MonoBehaviour
     {
-        private GameCamera _gameCamera;
         [SerializeField] private Transform dragContainer;
-
+        
+        private GameCamera _gameCamera;
         private float _scanDistance = 500f;
         private float _checkingVerticalOffset = 2f;
         private LayerMask _pawnsMask;
         private LayerMask _deskMask;
         private LayerMask _interactableMask;
-
         private Plane _plane = new Plane(Vector3.up, 0);
         private ChessFigure _draggableObject;
         private PawnConnector _settingConnector;
@@ -87,7 +86,8 @@ namespace TestCrazyPawns._Level
             if (Physics.Raycast(ray, out var scanResult, _scanDistance,
                     _interactableMask))
             {
-                if (scanResult.collider.TryGetComponent<global::TestCrazyPawns._Pawn.ChessFigure>(out var draggableObject))
+                if (scanResult.collider.TryGetComponent<ChessFigure>(
+                        out var draggableObject))
                 {
                     if (!IsDragging)
                     {
@@ -142,7 +142,7 @@ namespace TestCrazyPawns._Level
             }
         }
 
-        private void StartDragging(global::TestCrazyPawns._Pawn.ChessFigure draggableObject)
+        private void StartDragging(ChessFigure draggableObject)
         {
             DraggableObject = draggableObject;
             DraggableObject.Activate();
@@ -160,7 +160,7 @@ namespace TestCrazyPawns._Level
             DraggableObject = null;
         }
 
-        private void RemovePawn(global::TestCrazyPawns._Pawn.ChessFigure chessFigure)
+        private void RemovePawn(ChessFigure chessFigure)
         {
             _connectionController.RemoveConnectionsByPawn(chessFigure.Connectors);
             _pawnsController.RemovePawn(chessFigure);
