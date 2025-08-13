@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TestCrazyPawns._Pawn;
 using UnityEngine;
 
 public class PawnsGenerator
@@ -11,11 +12,11 @@ public class PawnsGenerator
         _maxAttemptNumber = maxAttemptNumber;
     }
 
-    public List<Pawn> GeneratePawns(PawnGeneratorData data)
+    public List<ChessFigure> GeneratePawns(PawnGeneratorData data)
     {
         _spawnRadius = data.InitialSpawnRadius;
 
-        var pawns = new List<Pawn>();
+        var pawns = new List<ChessFigure>();
 
         for (int i = 0; i < data.SpawnPawnCount; i++)
         {
@@ -30,7 +31,7 @@ public class PawnsGenerator
         return pawns;
     }
 
-    private Pawn AddFigure(PawnGeneratorData data)
+    private ChessFigure AddFigure(PawnGeneratorData data)
     {
         var prefab = data.Prefab;
 

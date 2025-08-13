@@ -1,3 +1,8 @@
+using TestCrazyPawns._Level;
+using TestCrazyPawns.Connections;
+using TestCrazyPawns.Desk;
+using TestCrazyPawns._Pawn;
+using TestCrazyPawns.Data;
 using UnityEngine;
 
 namespace TestCrazyPawns.Core
@@ -9,7 +14,9 @@ namespace TestCrazyPawns.Core
         [SerializeField] private DragController dragController;
         [SerializeField] private PawnsController pawnsController;
         [SerializeField] private CameraController cameraController;
-
+        [SerializeField] private GameCamera gameCamera;
+        [SerializeField] private InputController inputController;
+        
         private GameConfigData _gameConfigData;
         private PawnsDesk _desk;
 
@@ -17,11 +24,24 @@ namespace TestCrazyPawns.Core
 
         private void Start()
         {
-            _gameConfigData = DIContainer.I.GetInstance<Game>().GameConfigData;
-           
+            var game = DIContainer.I.GetInstance<Game>();
+            _gameConfigData = game.GameConfigData;
+
             _desk = deskGenerator.Generate(_gameConfigData.DeskConfigData);
             pawnsController.Init(_gameConfigData.PawnConfigData);
-            dragController.Init(connectionsController, pawnsController, cameraController);
+
+            var dragControllerData = new DragControllerData
+            {
+                ConnectionController = connectionsController,
+                PawnController = pawnsController,
+                CameraController = cameraController,
+                DragControllerParams = _gameConfigData.DragControllerParams,
+                GameCamera = gameCamera
+            };
+
+            dragController.Init(dragControllerData);
+            cameraController.Init(gameCamera, _gameConfigData.CameraControllerParams);
+            inputController.Init(game.GameServices.Input, dragController, cameraController);
         }
     }
 }

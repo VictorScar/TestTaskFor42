@@ -1,41 +1,42 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConnectionsController : MonoBehaviour
+namespace TestCrazyPawns.Connections
 {
-    [SerializeField] private Connection connectionPrefab;
-    private List<Connection> _connections = new List<Connection>();
-    
-    private void Update()
+    public class ConnectionsController : MonoBehaviour
     {
-        if (_connections != null)
+        [SerializeField] private Connection connectionPrefab;
+        private List<Connection> _connections = new List<Connection>();
+    
+        private void Update()
         {
-            foreach (var connection in _connections)
+            if (_connections != null)
             {
-                connection.UpdateInternal();
+                foreach (var connection in _connections)
+                {
+                    connection.UpdateInternal();
+                }
             }
         }
-    }
 
-    public void AddConnection(PawnConnector fromConnector, PawnConnector toConnector)
-    {
-        var connection = Instantiate(connectionPrefab, transform);
-        connection.SetData(fromConnector, toConnector);
-        _connections.Add(connection);
-    }
-
-    public void RemoveConnectionsByPawn(PawnConnector[] connectors)
-    {
-        for (int i = _connections.Count - 1; i >= 0; i--)
+        public void AddConnection(PawnConnector fromConnector, PawnConnector toConnector)
         {
-            var connection = _connections[i];
-            
-            if (connection.IsContainConnector(connectors))
+            var connection = Instantiate(connectionPrefab, transform);
+            connection.SetData(fromConnector, toConnector);
+            _connections.Add(connection);
+        }
+
+        public void RemoveConnectionsByPawn(PawnConnector[] connectors)
+        {
+            for (int i = _connections.Count - 1; i >= 0; i--)
             {
-                _connections.Remove(connection);
-                Destroy(connection.gameObject);
+                var connection = _connections[i];
+            
+                if (connection.IsContainConnector(connectors))
+                {
+                    _connections.Remove(connection);
+                    Destroy(connection.gameObject);
+                }
             }
         }
     }

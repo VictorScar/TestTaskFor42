@@ -16,3 +16,19 @@ MonoBehaviour:
   pawnConfig: {fileID: 11400000, guid: 2b1e3285dc7783f489fefd7c332acceb, type: 2}
   crazyPawnSettings: {fileID: 11400000, guid: c3b00c709b1f94f22a212add39c80449, type: 2}
   cellSize: {x: 1.5, y: 1.5}
+  dragControllerParams:
+    DragScanDistance: 500
+    CheckingVerticalOffset: 2
+    PawnsMask:
+      serializedVersion: 2
+      m_Bits: 65536
+    DeskMask:
+      serializedVersion: 2
+      m_Bits: 32768
+    InteractableMask:
+      serializedVersion: 2
+      m_Bits: 98304
+  cameraControllerParams:
+    MoveCameraSpeed: 25
+    MinDragThreshold: 2
+    ScaleSpeed: 25

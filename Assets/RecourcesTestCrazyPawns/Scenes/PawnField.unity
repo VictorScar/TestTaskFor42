@@ -414,7 +414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3bf266390573854298c8902155cc15b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameCamera: {fileID: 4796405414607977317}
   moveCameraSpeed: 25
   minDragThreshold: 2
   scaleSpeed: 25
@@ -463,18 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5971628bd79db4ba6badba5d48b408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameCamera: {fileID: 963179621}
   dragContainer: {fileID: 1774954516}
-  scanDistance: 500
-  pawnsMask:
-    serializedVersion: 2
-    m_Bits: 65536
-  deskMask:
-    serializedVersion: 2
-    m_Bits: 32768
-  interactableMask:
-    serializedVersion: 2
-    m_Bits: 98304
 --- !u!1 &957174460
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,12 +507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5a31a822465314a82852cee7b417fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!20 &963179621 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 1559381485759989653, guid: 368457728b5d74561b805d9bb789017e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4796405414607977316}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1096223828
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +541,8 @@ MonoBehaviour:
   dragController: {fileID: 588830103}
   pawnsController: {fileID: 957174462}
   cameraController: {fileID: 464891451}
+  gameCamera: {fileID: 4796405414607977317}
+  inputController: {fileID: 1098625522}
 --- !u!4 &1096223830
 Transform:
   m_ObjectHideFlags: 0
@@ -609,9 +593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b50de50583e1bb49989d8ca5269b264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 1526783224}
-  dragController: {fileID: 588830103}
-  cameraController: {fileID: 464891451}
 --- !u!4 &1098625523
 Transform:
   m_ObjectHideFlags: 0

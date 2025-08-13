@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 5034387279410546635}
   - component: {fileID: 8725297542184602018}
   m_Layer: 0
-  m_Name: pawn desk
+  m_Name: chess desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

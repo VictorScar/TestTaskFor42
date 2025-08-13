@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1849078491e4b44418e4af9dd4785562, type: 3}
   m_Name: PawnConfig
   m_EditorClassIdentifier: 
-  pawnPrefab: {fileID: 2408811696957996298, guid: 76811a70cb80aea44be0c0388cde22dd,
+  chessFigurePrefab: {fileID: 2408811696957996298, guid: 76811a70cb80aea44be0c0388cde22dd,
     type: 3}
-  spawnPawnCount: 7
   selectedConnectorConnectorMaterial: {fileID: 2100000, guid: ed0754c57fcc63b4c810ca27404cbf4f,
     type: 2}
   defaultMaterial: {fileID: 2100000, guid: 7c43818076f5b4867ad517424bd0d68a, type: 2}
+  maxAttemptGeneratePawn: 15

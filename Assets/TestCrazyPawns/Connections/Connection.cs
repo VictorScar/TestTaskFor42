@@ -1,55 +1,56 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Connection : MonoBehaviour
+namespace TestCrazyPawns.Connections
 {
-    [SerializeField] private LineRenderer lineRenderer;
-    private List<PawnConnector> _connectors = new List<PawnConnector>();
-    private int _connectorsCount = 2;
-
-    public void UpdateInternal()
+    public class Connection : MonoBehaviour
     {
-        if (_connectors != null && _connectors.Count > 1)
+        [SerializeField] private LineRenderer lineRenderer;
+        private List<PawnConnector> _connectors = new List<PawnConnector>();
+        private int _connectorsCount = 2;
+
+        public void UpdateInternal()
         {
-            for (int i = 0; i < _connectors.Count; i++)
+            if (_connectors != null && _connectors.Count > 1)
             {
-                lineRenderer.SetPosition(i, _connectors[i].Position);
-            }
-        }
-    }
-
-    public void SetData(PawnConnector fromConnector, PawnConnector toConnector)
-    {
-        _connectors.Clear();
-        _connectors.Add(fromConnector);
-        _connectors.Add(toConnector);
-    }
-
-    public bool IsContainConnector(PawnConnector[] connectors)
-    {
-        foreach (var connector in connectors)
-        {
-            if (IsContainConnector(connector))
-            {
-                return true;
+                for (int i = 0; i < _connectors.Count; i++)
+                {
+                    lineRenderer.SetPosition(i, _connectors[i].Position);
+                }
             }
         }
 
-        return false;
-    }
-
-    private bool IsContainConnector(PawnConnector findingConnector)
-    {
-        foreach (var connector in _connectors)
+        public void SetData(PawnConnector fromConnector, PawnConnector toConnector)
         {
-            if (findingConnector == connector)
-            {
-                return true;
-            }
+            _connectors.Clear();
+            _connectors.Add(fromConnector);
+            _connectors.Add(toConnector);
         }
 
-        return false;
+        public bool IsContainConnector(PawnConnector[] connectors)
+        {
+            foreach (var connector in connectors)
+            {
+                if (IsContainConnector(connector))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool IsContainConnector(PawnConnector findingConnector)
+        {
+            foreach (var connector in _connectors)
+            {
+                if (findingConnector == connector)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

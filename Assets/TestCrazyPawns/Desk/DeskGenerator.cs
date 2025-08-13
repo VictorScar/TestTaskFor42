@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TestCrazyPawns.Desk;
 using UnityEngine;
 
 public class DeskGenerator : MonoBehaviour

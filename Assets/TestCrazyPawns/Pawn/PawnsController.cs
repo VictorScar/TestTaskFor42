@@ -1,110 +1,111 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PawnsController : MonoBehaviour
+namespace TestCrazyPawns._Pawn
 {
-    private List<Pawn> _pawns = new List<Pawn>();
-    private PawnsGenerator _generator;
-
-    public List<Pawn> Pawns => _pawns;
-
-    public void Init(PawnConfigData pawnConfigData)
+    public class PawnsController : MonoBehaviour
     {
-        _generator = new PawnsGenerator(15);
+        private List<global::TestCrazyPawns._Pawn.ChessFigure> _pawns = new List<global::TestCrazyPawns._Pawn.ChessFigure>();
+        private PawnsGenerator _generator;
 
-        var pawnData = new PawnData()
+        public List<global::TestCrazyPawns._Pawn.ChessFigure> Pawns => _pawns;
+
+        public void Init(PawnConfigData pawnConfigData)
         {
-            ConnectorData = new ConnectorData
+            _generator = new PawnsGenerator(pawnConfigData.MaxAttemptGeneratePawn);
+
+            var pawnData = new PawnData()
             {
-                ActiveConnectorMaterial = pawnConfigData.ActiveConnectorMaterial,
-                SelectedConnectorMaterial = pawnConfigData.SelectedConnectorMaterial,
-                DefaultConnectorMaterial = pawnConfigData.DefaultConnectorMaterial
-            },
+                ConnectorData = new ConnectorData
+                {
+                    ActiveConnectorMaterial = pawnConfigData.ActiveConnectorMaterial,
+                    SelectedConnectorMaterial = pawnConfigData.SelectedConnectorMaterial,
+                    DefaultConnectorMaterial = pawnConfigData.DefaultConnectorMaterial
+                },
 
-            DeleteMaterial = pawnConfigData.DeleteMaterial,
-        };
+                DeleteMaterial = pawnConfigData.DeleteMaterial,
+            };
 
-        var generatorData = new PawnGeneratorData
-        {
-            SpawnPawnCount = pawnConfigData.SpawnPawnCount,
-            Prefab = pawnConfigData.PawnPrefab,
-            InitialSpawnRadius = pawnConfigData.InitialSpawnRadius,
-            PawnData = pawnData,
-            PawnRoot = transform
-        };
+            var generatorData = new PawnGeneratorData
+            {
+                SpawnPawnCount = pawnConfigData.SpawnPawnCount,
+                Prefab = pawnConfigData.ChessFigurePrefab,
+                InitialSpawnRadius = pawnConfigData.InitialSpawnRadius,
+                PawnData = pawnData,
+                PawnRoot = transform
+            };
 
-        _pawns = _generator.GeneratePawns(generatorData);
-    }
-
-    public bool RemovePawn(Pawn pawn)
-    {
-        if (pawn)
-        {
-            _pawns.Remove(pawn);
-
-            Destroy(pawn.gameObject);
-            return true;
+            _pawns = _generator.GeneratePawns(generatorData);
         }
 
-        return false;
-    }
-
-    public bool GetPawnByConnector(PawnConnector connector, out Pawn connectorPawn)
-    {
-        if (connector)
+        public bool RemovePawn(global::TestCrazyPawns._Pawn.ChessFigure chessFigure)
         {
-            foreach (var pawn in _pawns)
+            if (chessFigure)
             {
-                if (pawn.IsContainConnector(connector))
+                _pawns.Remove(chessFigure);
+
+                Destroy(chessFigure.gameObject);
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool GetPawnByConnector(PawnConnector connector, out global::TestCrazyPawns._Pawn.ChessFigure connectorChessFigure)
+        {
+            if (connector)
+            {
+                foreach (var pawn in _pawns)
                 {
-                    connectorPawn = pawn;
-                    return true;
+                    if (pawn.IsContainConnector(connector))
+                    {
+                        connectorChessFigure = pawn;
+                        return true;
+                    }
                 }
             }
+
+            connectorChessFigure = null;
+            return false;
         }
 
-        connectorPawn = null;
-        return false;
-    }
-
-    public void UpdateConnectorsState(PawnConnector settingConnector)
-    {
-        if (settingConnector)
+        public void UpdateConnectorsState(PawnConnector settingConnector)
         {
-            if (GetPawnByConnector(settingConnector, out var selectedPawn))
+            if (settingConnector)
+            {
+                if (GetPawnByConnector(settingConnector, out var selectedPawn))
+                {
+                    foreach (var pawn in _pawns)
+                    {
+                        foreach (var connector in pawn.Connectors)
+                        {
+                            if (pawn == selectedPawn)
+                            {
+                                if (connector == settingConnector)
+                                {
+                                    connector.SetState(ConnectorState.Selected);
+                                }
+                                else
+                                {
+                                    connector.SetState(ConnectorState.Default);
+                                }
+                            }
+                            else
+                            {
+                                connector.SetState(ConnectorState.Active);
+                            }
+                        }
+                    }
+                }
+            }
+            else
             {
                 foreach (var pawn in _pawns)
                 {
                     foreach (var connector in pawn.Connectors)
                     {
-                        if (pawn == selectedPawn)
-                        {
-                            if (connector == settingConnector)
-                            {
-                                connector.SetState(ConnectorState.Selected);
-                            }
-                            else
-                            {
-                                connector.SetState(ConnectorState.Default);
-                            }
-                        }
-                        else
-                        {
-                            connector.SetState(ConnectorState.Active);
-                        }
+                        connector.SetState(ConnectorState.Default);
                     }
-                }
-            }
-        }
-        else
-        {
-            foreach (var pawn in _pawns)
-            {
-                foreach (var connector in pawn.Connectors)
-                {
-                    connector.SetState(ConnectorState.Default);
                 }
             }
         }

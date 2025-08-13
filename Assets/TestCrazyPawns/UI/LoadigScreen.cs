@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using ScarFramework.UI;
-using UnityEngine;
 
-public class LoadigScreen : UIScreen
+namespace TestCrazyPawns.UI
 {
+    public class LoadigScreen : UIScreen
+    {
   
+    }
 }

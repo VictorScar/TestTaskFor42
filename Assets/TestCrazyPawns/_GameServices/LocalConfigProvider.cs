@@ -1,5 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using TestCrazyPawns.Desk;
 using UnityEngine;
 
 namespace TestCrazyPawns._GameServices
@@ -27,14 +28,18 @@ namespace TestCrazyPawns._GameServices
 
                     PawnConfigData = new PawnConfigData
                     {
-                        PawnPrefab = gameConfig.PawnConfig.PawnPrefab,
+                        ChessFigurePrefab = gameConfig.PawnConfig.ChessFigurePrefab,
                         ActiveConnectorMaterial = gameConfig.CrazyPawnSettings.ActiveConnectorMaterial,
                         SelectedConnectorMaterial = gameConfig.PawnConfig.SelectedConnectorMaterial,
                         DefaultConnectorMaterial = gameConfig.PawnConfig.DefaultMaterial,
                         DeleteMaterial = gameConfig.CrazyPawnSettings.DeleteMaterial,
                         InitialSpawnRadius = gameConfig.CrazyPawnSettings.InitialZoneRadius,
                         SpawnPawnCount = gameConfig.CrazyPawnSettings.InitialPawnCount,
-                    }
+                        MaxAttemptGeneratePawn = gameConfig.PawnConfig.MaxAttemptGeneratePawn
+                    },
+                    DragControllerParams = gameConfig.DragControllerParams,
+                    CameraControllerParams = gameConfig.CameraControllerParams
+                    
                 };
             }
 
