@@ -17,15 +17,18 @@ namespace TestCrazyPawns.Core
         {
             _gameServices = gameServices;
             DIContainer.I.RegisterComponent(this);
+            DontDestroyOnLoad(gameObject);
             StartGame();
         }
 
         private async UniTask StartGame()
         {
             _gameTokenSource = new CancellationTokenSource();
-
+            var loadingScreen = _gameServices.UISystem.GetScreen<LoadigScreen>();
+            loadingScreen.Show(immediately:true);
             await LoadConfiguration(_gameTokenSource.Token);
             await _gameServices.ScenesLoadController.LoadGameScene(_gameTokenSource.Token);
+            loadingScreen.Hide();
         }
 
         private async UniTask LoadConfiguration(CancellationToken token)

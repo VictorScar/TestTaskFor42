@@ -18,7 +18,16 @@ namespace ScarFramework.UI.ViewAnimators
                 }
             }
         }
-       
+
+        public override UIAnimator GetInstance()
+        {
+            var instance = ScriptableObject.CreateInstance<UISequenceAnimator>();
+            instance.animators = animators;
+            instance.duration = duration;
+            instance.ease = ease;
+            return instance;
+        }
+
 
         protected override Tween AnimateInternal(UIView view)
         {
@@ -32,7 +41,7 @@ namespace ScarFramework.UI.ViewAnimators
                 }
 
                 animationInternal.Play();
-              
+
                 return animationInternal;
             }
 
@@ -41,12 +50,10 @@ namespace ScarFramework.UI.ViewAnimators
 
         protected override void OnStartAnimation(UIView view)
         {
-        
         }
 
         protected override void OnEndAnimation()
         {
-           
         }
     }
 }
