@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/RecourcesTestCrazyPawns/Scenes/Boot.unity
+    guid: a81550add6567f64fa58a569e0eecc3e
+  - enabled: 1
     path: Assets/RecourcesTestCrazyPawns/Scenes/PawnField.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}

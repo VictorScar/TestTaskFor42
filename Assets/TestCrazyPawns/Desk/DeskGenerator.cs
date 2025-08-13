@@ -7,7 +7,7 @@ public class DeskGenerator : MonoBehaviour
     [SerializeField] private PawnsDesk deskPrefab;
     [SerializeField] private DeskCell cellPrefab;
 
-    public PawnsDesk Generate(DeskGeneratorData data)
+    public PawnsDesk Generate(DeskConfigData data)
     {
         var deskInstance = Instantiate(deskPrefab);
         var xOffset = -0.5f * data.DeskSize.x * data.CellSize.x + 0.5f * data.CellSize.x;

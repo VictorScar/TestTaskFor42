@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : MonoBehaviour, IPlayerInput
 {
-    [SerializeField] private float minDragTime;
+    [SerializeField] private float minDragTime = 0.2f;
 
+    private float _pressedTime;
     private bool _lMouseIsPressed;
-    public float _pressedTime;
     private bool _hasBeenPressedOnThisFrame;
     private bool _isDragging;
 

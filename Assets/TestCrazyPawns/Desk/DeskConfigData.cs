@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct DeskGeneratorData
+public struct DeskConfigData
 {
     public Vector2 DeskSize;
     public Vector2 CellSize;
